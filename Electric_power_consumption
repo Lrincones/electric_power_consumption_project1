@@ -1,0 +1,17 @@
+## read the file into R
+## find out the number of observations and verify the number of variables
+house_data_set <- read.csv("household_power_consumption.txt", sep = ";")
+dim(house_data_set)
+## [1] 2075259      9
+count(house_data_set, Sub_metering_3 == 0)
+##              FALSE 1197188
+##                TRUE  852092
+##                  NA   25979
+## close to 900.000 observations are either zero or NA
+## generate a small subset to explore the data
+sub_metering <- sample_frac(house_data_set, 0.01)
+dim(sub_metering)
+## [1] 20753    9
+## the variable Sub_metering_3 seems to have many observations with zero value
+sub_metering <- mutate(sub_metering, newdate = dmy(Date))
+sub_metering <- mutate(sub_metering, year = year(newdate))

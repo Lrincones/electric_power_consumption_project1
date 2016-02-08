@@ -28,3 +28,12 @@ mean(sub_metering$Sub_metering_2)
 mean(sub_metering$Sub_metering_3, na.rm = TRUE)
 ##[1] 6.440355
 with(sub_metering, plot(Sub_metering_3, Sub_metering_1))
+with(sub_metering, plot(Sub_metering_3, Sub_metering_2))
+fivenum(sub_metering$Sub_metering_3)
+## [1]  0  0  1 17 31
+fivenum(sub_metering$Sub_metering_1)
+## [1]  1  2  2  2 89
+> fivenum(sub_metering$Sub_metering_2)
+##[1]  1  2  2  3 82
+hist(sub_metering$Sub_metering_3, col = "green")
+##
